@@ -139,5 +139,6 @@ def fill_all_fields_invoice_EUR_is_SP(driver_instance):
 
 
 def submit_invoice(driver_instance):
-    elem = driver_instance.find_element(By.XPATH, add_invoice_button)
+    elem = wait_for_visibility_of_element(driver_instance, By.XPATH, add_invoice_button)
+    #elem = driver_instance.find_element(By.XPATH, add_invoice_button)
     elem.click()

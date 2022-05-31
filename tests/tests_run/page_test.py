@@ -1,7 +1,7 @@
 import unittest
 from selenium import webdriver
 # from config.test_settings import TestSettings
-from tests.page_object import login_page, invoices, add_invoice, invoice_view, main_page, desktop, contractors, cost_invoices
+from tests.page_object import login_page, invoices, add_invoice, invoice_view, main_page, desktop, contractors, cost_invoices, repayments, payments, loans
 # from tests.tests_data import tests_data
 from config import test_settings
 from time import sleep
@@ -128,3 +128,40 @@ class Tests(unittest.TestCase):
         self.assertTrue(cost_invoices.check_amount_visible(self.driver))
         self.assertTrue(cost_invoices.check_remaining_amount_to_pay_visible(self.driver))
         self.assertTrue(cost_invoices.check_status_visible(self.driver))
+
+    def test12_check_repayments_tab_content(self):
+        login_page.login_correct(self.driver)
+        self.assertTrue(main_page.go_repayments_tab(self.driver))
+        repayments.search_repayment(self.driver)
+        self.assertTrue(repayments.check_repayment_visible(self.driver))
+        self.assertTrue(repayments.check_payer_visible(self.driver))
+        self.assertTrue(repayments.check_repayment_date_visible(self.driver))
+        self.assertTrue(repayments.check_amount_visible(self.driver))
+        self.assertTrue(repayments.check_left_to_settled_amount_visible(self.driver))
+        self.assertTrue(repayments.check_details_visible(self.driver))
+        self.assertTrue(repayments.check_status_visible(self.driver))
+
+    def test13_check_payments_tab_content(self):
+        login_page.login_correct(self.driver)
+        self.assertTrue(main_page.go_payments_tab(self.driver))
+        payments.search_payment(self.driver)
+        self.assertTrue(payments.check_payment_visible(self.driver))
+        self.assertTrue(payments.check_type_visible(self.driver))
+        self.assertTrue(payments.check_payment_date_visible(self.driver))
+        self.assertTrue(payments.check_amount_visible(self.driver))
+        self.assertTrue(payments.check_amount_visible(self.driver))
+        self.assertTrue(payments.check_deduction_amount_visible(self.driver))
+        self.assertTrue(payments.check_transaction_amount_visible(self.driver))
+        self.assertTrue(payments.check_title_visible(self.driver))
+
+    def test14_check_loan_tab_content(self):
+        login_page.login_correct(self.driver)
+        self.assertTrue(main_page.go_loans_tab(self.driver))
+        loans.search_loan(self.driver)
+        self.assertTrue(loans.check_loan_visible(self.driver))
+        self.assertTrue(loans.check_issue_date_visible(self.driver))
+        self.assertTrue(loans.check_payment_date_visible(self.driver))
+        self.assertTrue(loans.check_amount_visible(self.driver))
+        self.assertTrue(loans.check_commission_amount_visible(self.driver))
+        self.assertTrue(loans.check_balance_visible(self.driver))
+        self.assertTrue(loans.check_status_visible(self.driver))

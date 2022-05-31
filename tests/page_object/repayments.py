@@ -14,7 +14,7 @@ search_result_details = '/html/body/app-root/app-layout/main/div/app-repayment-l
 search_result_status = '/html/body/app-root/app-layout/main/div/app-repayment-list/app-base-list/app-generic-table/table/tbody/tr/td[9]'
 
 
-def search_repayments(driver_instance):
+def search_repayment(driver_instance):
     elem = wait_for_visibility_of_element(driver_instance, By.XPATH, search_input)
     elem.send_keys(test_settings.documents.repayment)
     elem1 = driver_instance.find_element(By.XPATH, search_button)
@@ -22,3 +22,42 @@ def search_repayments(driver_instance):
     sleep(1)
 
 
+def check_repayment_visible(driver_instance):
+    elem = wait_for_visibility_of_element(driver_instance, By.XPATH, search_result_repayments_id)
+    if test_settings.documents.repayment in elem.text:
+        return True
+    else:
+        return False
+
+
+def check_payer_visible(driver_instance):
+    elem = wait_for_visibility_of_element(driver_instance, By.XPATH, search_result_payer)
+    if test_settings.documents.contractor in elem.text:
+        return True
+    else:
+        return False
+
+
+def check_repayment_date_visible(driver_instance):
+    elem = wait_for_visibility_of_element(driver_instance, By.XPATH, search_result_repayment_date)
+    return elem.is_displayed()
+
+
+def check_amount_visible(driver_instance):
+    elem = wait_for_visibility_of_element(driver_instance, By.XPATH, search_result_amount)
+    return elem.is_displayed()
+
+
+def check_left_to_settled_amount_visible(driver_instance):
+    elem = wait_for_visibility_of_element(driver_instance, By.XPATH, search_result_left_to_settled_amount)
+    return elem.is_displayed()
+
+
+def check_details_visible(driver_instance):
+    elem = wait_for_visibility_of_element(driver_instance, By.XPATH, search_result_details)
+    return elem.is_displayed()
+
+
+def check_status_visible(driver_instance):
+    elem = wait_for_visibility_of_element(driver_instance, By.XPATH, search_result_status)
+    return elem.is_displayed()
