@@ -1,7 +1,7 @@
 import unittest
 from selenium import webdriver
 # from config.test_settings import TestSettings
-from tests.page_object import login_page, invoices, add_invoice, invoice_view, main_page, desktop, contractors, cost_invoices, repayments, payments, loans
+from tests.page_object import login_page, invoices, add_invoice, invoice_details, main_page, desktop, contractors, cost_invoices, repayments, payments, loans
 # from tests.tests_data import tests_data
 from config import test_settings
 from time import sleep
@@ -20,13 +20,13 @@ class Tests(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test1_login_page_content_visible(self):
+    def test01_login_page_content_visible(self):
         self.assertTrue(login_page.content_visible(self.driver))
 
-    def test2_login_page_correct_login(self):
+    def test02_login_page_correct_login(self):
         self.assertTrue(login_page.login_correct(self.driver))
 
-    def test3_check_invoices_tab_content(self):
+    def test03_check_invoices_tab_content(self):
         login_page.login_correct(self.driver)
         self.assertTrue(main_page.go_invoices_tab(self.driver))
         invoices.search_invoice(self.driver)
@@ -39,65 +39,66 @@ class Tests(unittest.TestCase):
         self.assertTrue(invoices.check_debtor_balance_visible(self.driver))
         self.assertTrue(invoices.check_status_visible(self.driver))
 
-    def test4_add_invoice(self):
+    def test04_add_invoice(self):
         login_page.login_correct(self.driver)
         invoices.open_add_invoice_popup(self.driver)
         add_invoice.fill_all_fields_invoice_pln(self.driver)
         add_invoice.submit_invoice(self.driver)
-        self.assertTrue(invoice_view.wait_for_invoice_view(self.driver))
-        self.assertTrue(invoice_view.check_invoice_status(self.driver))
-        self.assertFalse(invoice_view.check_invoice_is_sp(self.driver))
-        self.assertTrue(invoice_view.check_invoice_gross_amount(self.driver, test_settings.invoice_vat.gross_amount))
-        self.assertTrue((invoice_view.check_invoice_net_amount(self.driver, test_settings.invoice_vat.gross_amount, test_settings.invoice_vat.vat_amount)))
-        self.assertTrue(invoice_view.check_invoice_vat_amount(self.driver, test_settings.invoice_vat.vat_amount))
+        self.assertTrue(invoice_details.wait_for_invoice_view(self.driver))
+        self.assertTrue(invoice_details.check_invoice_status(self.driver))
+        self.assertFalse(invoice_details.check_invoice_is_sp(self.driver))
+        self.assertTrue(invoice_details.check_invoice_gross_amount(self.driver, test_settings.invoice_vat.gross_amount))
+        self.assertTrue((invoice_details.check_invoice_net_amount(self.driver, test_settings.invoice_vat.gross_amount, test_settings.invoice_vat.vat_amount)))
+        self.assertTrue(invoice_details.check_invoice_vat_amount(self.driver, test_settings.invoice_vat.vat_amount))
 
-    def test5_add_invoice_no_vat(self):
+    def test05_add_invoice_no_vat(self):
         login_page.login_correct(self.driver)
         invoices.open_add_invoice_popup(self.driver)
         add_invoice.fill_all_fields_invoice_pln_no_vat(self.driver)
+        self.assertTrue(add_invoice.add_amount_vat_is_block(self.driver, test_settings.invoice_vat.vat_amount))
         add_invoice.submit_invoice(self.driver)
-        self.assertTrue(invoice_view.wait_for_invoice_view(self.driver))
-        self.assertTrue(invoice_view.check_invoice_status(self.driver))
-        self.assertFalse(invoice_view.check_invoice_is_sp(self.driver))
-        self.assertTrue(invoice_view.check_invoice_gross_amount(self.driver, test_settings.invoice_no_vat.gross_amount))
+        self.assertTrue(invoice_details.wait_for_invoice_view(self.driver))
+        self.assertTrue(invoice_details.check_invoice_status(self.driver))
+        self.assertFalse(invoice_details.check_invoice_is_sp(self.driver))
+        self.assertTrue(invoice_details.check_invoice_gross_amount(self.driver, test_settings.invoice_no_vat.gross_amount))
 
-    def test6_add_invoice_is_sp(self):
+    def test06_add_invoice_is_sp(self):
         login_page.login_correct(self.driver)
         invoices.open_add_invoice_popup(self.driver)
         add_invoice.fill_all_fields_invoice_pln_is_sp(self.driver)
         add_invoice.submit_invoice(self.driver)
-        self.assertTrue(invoice_view.wait_for_invoice_view(self.driver))
-        self.assertTrue(invoice_view.check_invoice_status(self.driver))
-        self.assertTrue(invoice_view.check_invoice_is_sp(self.driver))
-        self.assertTrue(invoice_view.check_invoice_gross_amount(self.driver, test_settings.invoice_no_vat.gross_amount))
-        self.assertTrue(invoice_view.check_invoice_net_amount(self.driver, test_settings.invoice_is_sp.gross_amount, test_settings.invoice_is_sp.vat_amount))
-        self.assertTrue(invoice_view.check_invoice_vat_amount(self.driver, test_settings.invoice_is_sp.vat_amount))
+        self.assertTrue(invoice_details.wait_for_invoice_view(self.driver))
+        self.assertTrue(invoice_details.check_invoice_status(self.driver))
+        self.assertTrue(invoice_details.check_invoice_is_sp(self.driver))
+        self.assertTrue(invoice_details.check_invoice_gross_amount(self.driver, test_settings.invoice_no_vat.gross_amount))
+        self.assertTrue(invoice_details.check_invoice_net_amount(self.driver, test_settings.invoice_is_sp.gross_amount, test_settings.invoice_is_sp.vat_amount))
+        self.assertTrue(invoice_details.check_invoice_vat_amount(self.driver, test_settings.invoice_is_sp.vat_amount))
 
-    def test7_add_invoice_in_eur(self):
+    def test07_add_invoice_in_eur(self):
         login_page.login_correct(self.driver)
         invoices.open_add_invoice_popup(self.driver)
         add_invoice.fill_all_fields_invoice_eur(self.driver)
         add_invoice.submit_invoice(self.driver)
-        self.assertTrue(invoice_view.wait_for_invoice_view(self.driver))
-        self.assertTrue(invoice_view.check_invoice_status(self.driver))
-        self.assertFalse(invoice_view.check_invoice_is_sp(self.driver))
-        self.assertTrue(invoice_view.check_invoice_gross_amount(self.driver, test_settings.invoice_vat.gross_amount))
-        self.assertTrue(invoice_view.check_invoice_net_amount(self.driver, test_settings.invoice_vat.gross_amount, test_settings.invoice_vat.vat_amount))
-        self.assertTrue(invoice_view.check_invoice_vat_amount(self.driver, test_settings.invoice_vat.vat_amount))
+        self.assertTrue(invoice_details.wait_for_invoice_view(self.driver))
+        self.assertTrue(invoice_details.check_invoice_status(self.driver))
+        self.assertFalse(invoice_details.check_invoice_is_sp(self.driver))
+        self.assertTrue(invoice_details.check_invoice_gross_amount(self.driver, test_settings.invoice_vat.gross_amount))
+        self.assertTrue(invoice_details.check_invoice_net_amount(self.driver, test_settings.invoice_vat.gross_amount, test_settings.invoice_vat.vat_amount))
+        self.assertTrue(invoice_details.check_invoice_vat_amount(self.driver, test_settings.invoice_vat.vat_amount))
 
-    def test8_add_invoice_in_eur_is_sp(self):
+    def test08_add_invoice_in_eur_is_sp(self):
         login_page.login_correct(self.driver)
         invoices.open_add_invoice_popup(self.driver)
         add_invoice.fill_all_fields_invoice_EUR_is_SP(self.driver)
         add_invoice.submit_invoice(self.driver)
-        self.assertTrue(invoice_view.wait_for_invoice_view(self.driver))
-        self.assertTrue(invoice_view.check_invoice_status(self.driver))
-        self.assertTrue(invoice_view.check_invoice_is_sp(self.driver))
-        self.assertTrue(invoice_view.check_invoice_gross_amount(self.driver, test_settings.invoice_is_sp_eur.gross_amount))
-        self.assertTrue(invoice_view.check_invoice_net_amount(self.driver, test_settings.invoice_is_sp_eur.gross_amount, test_settings.invoice_is_sp_eur.vat_amount))
-        self.assertTrue(invoice_view.check_invoice_vat_amount(self.driver, test_settings.invoice_is_sp_eur.vat_amount))
+        self.assertTrue(invoice_details.wait_for_invoice_view(self.driver))
+        self.assertTrue(invoice_details.check_invoice_status(self.driver))
+        self.assertTrue(invoice_details.check_invoice_is_sp(self.driver))
+        self.assertTrue(invoice_details.check_invoice_gross_amount(self.driver, test_settings.invoice_is_sp_eur.gross_amount))
+        self.assertTrue(invoice_details.check_invoice_net_amount(self.driver, test_settings.invoice_is_sp_eur.gross_amount, test_settings.invoice_is_sp_eur.vat_amount))
+        self.assertTrue(invoice_details.check_invoice_vat_amount(self.driver, test_settings.invoice_is_sp_eur.vat_amount))
 
-    def test9_check_desktop_tab_content(self):
+    def test09_check_desktop_tab_content(self):
         login_page.login_correct(self.driver)
         self.assertTrue(main_page.go_desktop_tab(self.driver))
         self.assertTrue(desktop.available_limit_is_visible(self.driver))
@@ -165,3 +166,17 @@ class Tests(unittest.TestCase):
         self.assertTrue(loans.check_commission_amount_visible(self.driver))
         self.assertTrue(loans.check_balance_visible(self.driver))
         self.assertTrue(loans.check_status_visible(self.driver))
+
+# tutaj trzeba dodać Umowę bez rach. cesji w eur
+#     def test15_add_invoice_in_eur_not_possible(self):
+#         login_page.login_correct(self.driver)
+#         invoices.open_add_invoice_popup(self.driver)
+#         self.assertTrue(add_invoice.change_currency(self.driver))
+#         add_invoice.fill_all_fields_invoice_eur_not_possible(self.driver)
+#         add_invoice.submit_invoice(self.driver)
+#         self.assertTrue(invoice_details.wait_for_invoice_view(self.driver))
+#         self.assertTrue(invoice_details.check_invoice_status(self.driver))
+#         self.assertFalse(invoice_details.check_invoice_is_sp(self.driver))
+#         self.assertTrue(invoice_details.check_invoice_gross_amount(self.driver, test_settings.invoice_vat.gross_amount))
+#         self.assertTrue(invoice_details.check_invoice_net_amount(self.driver, test_settings.invoice_vat.gross_amount, test_settings.invoice_vat.vat_amount))
+#         self.assertTrue(invoice_details.check_invoice_vat_amount(self.driver, test_settings.invoice_vat.vat_amount))

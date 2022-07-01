@@ -3,15 +3,15 @@ from tests.page_object import main_page
 from config import test_settings
 from time import sleep
 
-search_input = '/html/body/app-root/app-layout/main/div/app-contractor-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input'
-search_button = '/html/body/app-root/app-layout/main/div/app-contractor-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/div/button'
-search_result_contractor = '/html/body/app-root/app-layout/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[2]/app-text-column/div/div'
-search_result_limit = '/html/body/app-root/app-layout/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[3]/app-currency-column/div'
-search_result_current_financing = '/html/body/app-root/app-layout/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[4]/app-currency-column/div'
-search_result_available_limit = '/html/body/app-root/app-layout/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[5]/app-currency-column/div'
-search_result_financig_level = '/html/body/app-root/app-layout/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[6]/app-text-column/div/div'
+search_input = '/html/body/app-root/app-layout-authenticated/main/div/app-contractor-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input'
+search_button = '/html/body/app-root/app-layout-authenticated/main/div/app-contractor-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/div/button'
+search_result_contractor = '/html/body/app-root/app-layout-authenticated/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[2]/app-text-column/div/div'
+search_result_limit = '/html/body/app-root/app-layout-authenticated/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[3]/app-currency-column/div'
+search_result_current_financing = '/html/body/app-root/app-layout-authenticated/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[4]/app-currency-column/div'
+search_result_available_limit = '/html/body/app-root/app-layout-authenticated/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[5]/app-currency-column/div'
+search_result_financig_level = '/html/body/app-root/app-layout-authenticated/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[6]/app-text-column/div/div'
 # search_result_risk = ''
-search_result_status = '/html/body/app-root/app-layout/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[8]/app-enum-column/app-enum/div/span[1]'
+search_result_status = '/html/body/app-root/app-layout-authenticated/main/div/app-contractor-list/app-base-list/app-generic-table/table/tbody/tr/td[8]/app-enum-column/app-enum/div/span[1]'
 
 
 def search_contractor(driver_instance):

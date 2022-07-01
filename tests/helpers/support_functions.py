@@ -7,6 +7,8 @@ from selenium.webdriver.support.select import Select
 from datetime import datetime
 import pymssql
 from config import test_settings
+from time import sleep
+from selenium.webdriver.common.keys import Keys
 
 
 # funkcja najeżdza na element, aż się rozwinie zawartość na skutek najechania
@@ -29,9 +31,44 @@ def wait_for_invisibility_of_element(inv_driver_instance, selector_type, selecto
     return inv_elem
 
 
-def check_if_element_is_no_clickable(driver_instance, selector_type, selector, time_to_wait=8):
-    elem = WebDriverWait(driver_instance, time_to_wait).until_not(EC.element_to_be_clickable((selector_type, selector)))
+def wait_for_element_is_clickable(driver_instance, selector_type, selector, time_to_wait=3):
+    elem = WebDriverWait(driver_instance, time_to_wait).until(EC.element_to_be_clickable((selector_type, selector)))
     return elem
+
+
+def move_to_element(driver_instance, selector_type, selector):
+    elem = driver_instance.find_element(selector_type, selector)
+    ActionChains(driver_instance).move_to_element(elem).perform()
+    return elem
+
+
+def wait_if_button_is_disable(driver_instance, selector_type, selector):
+    # print(driver_instance.find_element(selector_type, selector).get_attribute('disabled'))
+    while driver_instance.find_element(selector_type, selector).get_attribute('disabled') == 'true':
+        print('Wait because button is disable ')
+        sleep(0.1)
+
+
+def check_if_element_is_not_clickable(driver_instance, selector_type, selector, time_to_wait=3):
+    try:
+        WebDriverWait(driver_instance, time_to_wait).until_not(EC.element_to_be_clickable((selector_type, selector)))
+        return True
+    except TimeoutException:
+        return False
+
+
+def check_if_input_is_block(driver_instance, selector_type, selector, value):
+    elem = driver_instance.find_element(selector_type, selector)
+    try:
+        elem.send_keys(value)
+        return False
+    except ElementNotInteractableException:
+        return True
+    # print(elem.send_keys(Keys.RETURN))
+    # if elem.send_keys(Keys.RETURN) == '':
+    #     return True
+    # return False
+
 
 # do sprawdzenia jak będzie działać, bo nieużywana jeszcze
 def get_dropdown_value(driver_instance, selector_type, selector, selected_value):

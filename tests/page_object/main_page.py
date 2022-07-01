@@ -1,19 +1,19 @@
 from tests.helpers.support_functions import *
 
-desktop_tab_link = '/html/body/app-root/app-layout/div/app-navbar/div/ul/li[1]/a'
-desktop_tab_header = '/html/body/app-root/app-layout/main/div/app-dashboard/div/div/div[1]/app-dashboard-limit/div/div/div[1]/span'
-invoices_tab_link = '/html/body/app-root/app-layout/div/app-navbar/div/ul/li[2]'
-invoices_tab_header = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/div[1]/h1'
-contractors_tab_link = '/html/body/app-root/app-layout/div/app-navbar/div/ul/li[3]/a'
-contractors_tab_header = '/html/body/app-root/app-layout/main/div/app-contractor-list/app-base-list/div[1]/h1'
-cost_invoices_tab_link = '/html/body/app-root/app-layout/div/app-navbar/div/ul/li[4]/a'
-cost_invoices_header = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/div[1]/h1'
-repayments_tab_link = '/html/body/app-root/app-layout/div/app-navbar/div/ul/li[5]/a'
-repayments_tab_header = '/html/body/app-root/app-layout/main/div/app-repayment-list/app-base-list/div[1]/h1'
-payments_tab_link = '/html/body/app-root/app-layout/div/app-navbar/div/ul/li[6]/a'
-payments_tab_header = '/html/body/app-root/app-layout/main/div/app-payment-list/app-base-list/div[1]/h1'
-loans_tab_link = '/html/body/app-root/app-layout/div/app-navbar/div/ul/li[7]/a'
-loans_tab_header = '/html/body/app-root/app-layout/main/div/app-loan-list/app-base-list/div[1]/h1'
+desktop_tab_link = '/html/body/app-root/app-layout-authenticated/div/app-navbar/div/ul/li[1]/a'
+desktop_tab_header = '/html/body/app-root/app-layout-authenticated/main/div/app-dashboard/div/div/div[1]/app-dashboard-limit/div/div/div[1]/span'
+invoices_tab_link = '/html/body/app-root/app-layout-authenticated/div/app-navbar/div/ul/li[2]'
+invoices_tab_header = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/div[1]/h1'
+contractors_tab_link = '/html/body/app-root/app-layout-authenticated/div/app-navbar/div/ul/li[3]/a'
+contractors_tab_header = '/html/body/app-root/app-layout-authenticated/main/div/app-contractor-list/app-base-list/div[1]/h1'
+cost_invoices_tab_link = '/html/body/app-root/app-layout-authenticated/div/app-navbar/div/ul/li[4]/a'
+cost_invoices_header = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/div[1]/h1'
+repayments_tab_link = '/html/body/app-root/app-layout-authenticated/div/app-navbar/div/ul/li[5]/a'
+repayments_tab_header = '/html/body/app-root/app-layout-authenticated/main/div/app-repayment-list/app-base-list/div[1]/h1'
+payments_tab_link = '/html/body/app-root/app-layout-authenticated/div/app-navbar/div/ul/li[6]/a'
+payments_tab_header = '/html/body/app-root/app-layout-authenticated/main/div/app-payment-list/app-base-list/div[1]/h1'
+loans_tab_link = '/html/body/app-root/app-layout-authenticated/div/app-navbar/div/ul/li[7]/a'
+loans_tab_header = '/html/body/app-root/app-layout-authenticated/main/div/app-loan-list/app-base-list/div[1]/h1'
 
 
 def go_desktop_tab(driver_instance):

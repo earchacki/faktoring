@@ -2,15 +2,15 @@ from tests.helpers.support_functions import *
 from config import test_settings
 from time import sleep
 
-search_input = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input'
-search_button = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/div/button'
-search_result_cost_invoice_number = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[2]/app-link-column/a'
-search_result_type = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[3]'
-search_result_sale_date = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[5]'
-search_result_date_of_payment = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[6]'
-search_result_amount = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[7]'
-search_result_remaining_amount_to_pay = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[8]'
-search_result_status = '/html/body/app-root/app-layout/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[9]'
+search_input = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input'
+search_button = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/div/button'
+search_result_cost_invoice_number = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[2]/app-link-column/a'
+search_result_type = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[3]'
+search_result_sale_date = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[5]'
+search_result_date_of_payment = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[6]'
+search_result_amount = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[7]'
+search_result_remaining_amount_to_pay = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[8]'
+search_result_status = '/html/body/app-root/app-layout-authenticated/main/div/app-cost-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[9]'
 
 
 def search_cost_invoice(driver_instance):

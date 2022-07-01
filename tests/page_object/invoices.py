@@ -2,24 +2,25 @@ from tests.helpers.support_functions import *
 from config import test_settings
 from time import sleep
 
-invoices_content = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/div[1]/h1'
-search_input = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input'
-search_button = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/div/button'
+invoices_content = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/div[1]/h1'
+search_input = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input'
+# /html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input
+search_button = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/div/button'
 search_result = '//table/tbody/tr/td[2]'
 search_result_row = '//table/tbody/tr'
 # search_result = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[2]/app-link-column/a/span[2]'
-add_invoice_button = '/html/body/app-root/app-layout/div/app-header/div/div[2]/app-add-invoice-button/div/button'
+add_invoice_button = '/html/body/app-root/app-layout-authenticated/div/app-header/div/div[2]/app-add-invoice-button/div/button'
 
-search_result_invoice_number = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[2]'
-search_result_contractor = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[3]'
-search_result_sale_date = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[4]'
+search_result_invoice_number = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[2]'
+search_result_contractor = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[3]'
+search_result_sale_date = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[4]'
 search_result_sale_date_class = 'cell.column-date'
-search_result_date_of_payment = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[5]'
-search_result_gross_amount = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[6]'
-search_result_advance_payment = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[7]'
-search_result_debtor_balance = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[8]'
+search_result_date_of_payment = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[5]'
+search_result_gross_amount = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[6]'
+search_result_advance_payment = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[7]'
+search_result_debtor_balance = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[8]'
 search_result_risk_acceptance = ''
-search_result_status = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[10]'
+search_result_status = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[10]'
 
 
 def invoices_content_visible(driver_instance):

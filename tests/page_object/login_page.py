@@ -3,10 +3,10 @@ from tests.page_object.invoices import invoices_content_visible
 from config import test_settings
 
 login_page_header = '/html/head/title'
-login_page_content = '/html/body/app-root/app-login/app-layout/main/div/div/div[1]/div/div/div'
+login_page_content = '/html/body/app-root/app-login/app-layout-general/main/div/div/div[1]/div/div/div'
 input_login = 'userName'
 input_password = 'password'
-button_login = '/html/body/app-root/app-login/app-layout/main/div/div/div[1]/div/div/form/button'
+button_login = '/html/body/app-root/app-login/app-layout-general/main/div/div/div[1]/div/div/form/button'
 
 
 def content_visible(driver_instance):
