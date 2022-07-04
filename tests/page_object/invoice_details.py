@@ -1,7 +1,6 @@
 from tests.helpers.support_functions import *
 from tests.page_object import add_invoice
 from config import test_settings
-from time import sleep
 
 invoice_status = '//*[@id="messages-panel-header"]/div/app-enum/div/span[1]'
 create_correction_button = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-details/div/div[1]/div/div/div[1]/div'
@@ -24,15 +23,6 @@ def check_invoice_status(driver_instance):
         return True
     else:
         return False
-
-
-# def check_invoice_number(driver_instance):
-#     elem = driver_instance.find_element(By.XPATH, invoice_number)
-#     print(elem.text)
-#     if elem.text == 'Faktura ' + add_invoice....:
-#         return True
-#     else:
-#         return False
 
 
 def check_invoice_is_sp(driver_instance):
