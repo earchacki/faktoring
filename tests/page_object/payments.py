@@ -1,6 +1,5 @@
 from tests.helpers.support_functions import *
 from config import test_settings
-from time import sleep
 
 search_input = '/html/body/app-root/app-layout-authenticated/main/div/app-payment-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input'
 search_button = '/html/body/app-root/app-layout-authenticated/main/div/app-payment-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/div/button'
@@ -18,7 +17,6 @@ def search_payment(driver_instance):
     elem.send_keys(test_settings.documents.payment)
     elem1 = driver_instance.find_element(By.XPATH, search_button)
     elem1.click()
-    sleep(1)
 
 
 def check_payment_visible(driver_instance):
