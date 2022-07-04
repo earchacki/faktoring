@@ -7,7 +7,6 @@ from selenium.webdriver.support.select import Select
 from datetime import datetime
 import pymssql
 from config import test_settings
-from time import sleep
 from selenium.webdriver.common.keys import Keys
 
 
@@ -46,7 +45,6 @@ def wait_if_button_is_disable(driver_instance, selector_type, selector):
     # print(driver_instance.find_element(selector_type, selector).get_attribute('disabled'))
     while driver_instance.find_element(selector_type, selector).get_attribute('disabled') == 'true':
         print('Wait because button is disable ')
-        sleep(0.1)
 
 
 def check_if_element_is_not_clickable(driver_instance, selector_type, selector, time_to_wait=3):
@@ -64,16 +62,11 @@ def check_if_input_is_block(driver_instance, selector_type, selector, value):
         return False
     except ElementNotInteractableException:
         return True
-    # print(elem.send_keys(Keys.RETURN))
-    # if elem.send_keys(Keys.RETURN) == '':
-    #     return True
-    # return False
 
 
-# do sprawdzenia jak będzie działać, bo nieużywana jeszcze
+# do sprawdzenia jak będzie działać
 def get_dropdown_value(driver_instance, selector_type, selector, selected_value):
     elem_list = Select(driver_instance.find_element(selector_type, selector))
-    #wait_for_visibility_of_element(driver_instance, selector_type, selector)
     elem_list.select_by_value(selected_value)
     return elem_list
 
