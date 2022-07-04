@@ -1,6 +1,5 @@
 from tests.helpers.support_functions import *
 from selenium.webdriver.support.select import Select
-from time import sleep
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 from datetime import datetime
@@ -42,7 +41,6 @@ def add_contractor(driver_instance):
     elem = driver_instance.find_element(By.XPATH, input_contractor)
     elem.click()
     elem.send_keys(test_settings.documents.contractor)
-    sleep(1)
     elem.send_keys(Keys.ENTER)
 
 
@@ -165,11 +163,7 @@ def fill_all_fields_invoice_eur_not_possible(driver_instance):
 
 
 def submit_invoice(driver_instance):
-    # sleep(1)
     wait_if_button_is_disable(driver_instance, By.XPATH, add_invoice_button)
-    # elem = move_to_element(driver_instance, By.XPATH, add_invoice_button)
-    # elem = wait_for_element_is_clickable(driver_instance, By.XPATH, add_invoice_button)
-    # elem = wait_for_visibility_of_element(driver_instance, By.XPATH, add_invoice_button)
     elem = driver_instance.find_element(By.XPATH, add_invoice_button)
     elem.click()
 
