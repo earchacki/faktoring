@@ -42,7 +42,6 @@ def move_to_element(driver_instance, selector_type, selector):
 
 
 def wait_if_button_is_disable(driver_instance, selector_type, selector):
-    # print(driver_instance.find_element(selector_type, selector).get_attribute('disabled'))
     while driver_instance.find_element(selector_type, selector).get_attribute('disabled') == 'true':
         print('Wait because button is disable ')
 
