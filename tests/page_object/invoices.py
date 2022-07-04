@@ -1,16 +1,12 @@
 from tests.helpers.support_functions import *
 from config import test_settings
-from time import sleep
 
 invoices_content = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/div[1]/h1'
 search_input = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input'
-# /html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/input
 search_button = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/div[2]/div/app-base-filter-inline/div/div/div[1]/div/button'
 search_result = '//table/tbody/tr/td[2]'
 search_result_row = '//table/tbody/tr'
-# search_result = '/html/body/app-root/app-layout/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[2]/app-link-column/a/span[2]'
 add_invoice_button = '/html/body/app-root/app-layout-authenticated/div/app-header/div/div[2]/app-add-invoice-button/div/button'
-
 search_result_invoice_number = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[2]'
 search_result_contractor = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[3]'
 search_result_sale_date = '/html/body/app-root/app-layout-authenticated/main/div/app-invoice-list/app-base-list/app-generic-table/table/tbody/tr/td[4]'
@@ -34,7 +30,6 @@ def search_invoice(driver_instance):
     elem.send_keys(test_settings.documents.invoice)
     elem1 = driver_instance.find_element(By.XPATH, search_button)
     elem1.click()
-    sleep(1)
 
 
 def open_add_invoice_popup(driver_instance):
